@@ -66,6 +66,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "download" */ '../views/Download.vue')
   },
+  {
+    path: '/references/:uuid',
+    name: 'ReferenceDetail',
+    // route level code-splitting
+    // this generates a separate chunk (reference_detail.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reference_detail" */ '../views/ReferenceDetail.vue')
+  },
 ]
 
 const router = new VueRouter({

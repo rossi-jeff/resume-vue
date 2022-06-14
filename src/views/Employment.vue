@@ -1,7 +1,8 @@
 <template>
   <div class="employment">
     <BreadCrumbs :trail="trail" />
-    <div v-for="job of getJobs" :key="job.Id">{{ job.Company }}</div>
+    <ContentRender :rows="rows" />
+    <CardJob v-for="job of getJobs" :key="job.Id" :job="job" />
   </div>
 </template>
 
@@ -9,12 +10,16 @@
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID } from '../lib';
 import { GET_JOBS_QUERY } from '../graphql/queries';
+import CardJob from '../components/cards/CardJob.vue';
+import ContentRender from '../components/ContentRender.vue';
 
 
 export default {
   name: 'Employment',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    CardJob,
+    ContentRender
   },
   apollo: {
     getJobs: GET_JOBS_QUERY

@@ -1,7 +1,8 @@
 <template>
   <div class="references">
     <BreadCrumbs :trail="trail" />
-    <div v-for="reference of getReferences" :key="reference.Id">{{ FormatName(reference.Name) }}</div>
+    <ContentRender :rows="rows" />
+    <CardReference v-for="reference of getReferences" :key="reference.Id" :reference="reference" />
   </div>
 </template>
 
@@ -9,11 +10,15 @@
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID, FormatName } from '../lib';
 import { GET_REFERENCES_QUERY } from '../graphql/queries';
+import CardReference from '../components/cards/CardReference.vue';
+import ContentRender from '../components/ContentRender.vue';
 
 export default {
   name: 'References',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    CardReference,
+    ContentRender
   },
   apollo: {
     getReferences: GET_REFERENCES_QUERY

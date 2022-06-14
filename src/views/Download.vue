@@ -1,17 +1,20 @@
 <template>
   <div class="download">
     <BreadCrumbs :trail="trail" />
+    <ContentRender :rows="rows" />
   </div>
 </template>
 
 <script>
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID } from '../lib';
+import ContentRender from '../components/ContentRender.vue';
 
 export default {
   name: 'Download',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    ContentRender
   },
   data: () => ({
     trail: [{ text: 'Home', href: '/' },{ text: 'Download' }],

@@ -1,7 +1,8 @@
 <template>
   <div class="education">
     <BreadCrumbs :trail="trail" />
-    <div v-for="school of getSchools" :key="school.Id">{{ school.Name }}</div>
+    <ContentRender :rows="rows" />
+    <CardSchool v-for="school of getSchools" :key="school.Id" :school="school" />
   </div>
 </template>
 
@@ -9,11 +10,15 @@
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID } from '../lib';
 import { GET_SCHOOLS_QUERY } from '../graphql/queries';
+import CardSchool from '../components/cards/CardSchool.vue';
+import ContentRender from '../components/ContentRender.vue';
 
 export default {
   name: 'Eduction',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    CardSchool,
+    ContentRender
   },
   apollo: {
     getSchools: GET_SCHOOLS_QUERY

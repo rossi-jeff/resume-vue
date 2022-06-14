@@ -1,7 +1,8 @@
 <template>
   <div class="testimonials">
     <BreadCrumbs :trail="trail" />
-    <div v-for="comment of getComments" :key="comment.Id">{{ comment.Message }}</div>
+    <ContentRender :rows="rows" />
+    <CardTestimonial v-for="comment of getComments" :key="comment.Id" :comment="comment" />
   </div>
 </template>
 
@@ -9,11 +10,15 @@
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID } from '../lib';
 import { GET_COMMENTS_QUERY } from '../graphql/queries';
+import CardTestimonial from '../components/cards/CardTestimonial.vue';
+import ContentRender from '../components/ContentRender.vue';
 
 export default {
   name: 'Testimonials',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    CardTestimonial,
+    ContentRender
   },
   apollo: {
     getComments: GET_COMMENTS_QUERY

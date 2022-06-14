@@ -1,7 +1,8 @@
 <template>
   <div class="links">
     <BreadCrumbs :trail="trail" />
-    <div v-for="link of getLinks" :key="link.Id">{{ link.Title }}</div>
+    <ContentRender :rows="rows" />
+    <TableLinks :links="getLinks" />
   </div>
 </template>
 
@@ -9,11 +10,15 @@
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
 import { contentUrl, ContentUUID } from '../lib';
 import { GET_LINKS_QUERY } from '../graphql/queries';
+import TableLinks from '../components/tables/TableLinks.vue';
+import ContentRender from '../components/ContentRender.vue';
 
 export default {
   name: 'Links',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    TableLinks,
+    ContentRender
   },
   apollo: {
     getLinks: GET_LINKS_QUERY
