@@ -17,40 +17,7 @@
           <FormMessage :contact="contact" />
         </b-step-item>
         <b-step-item label="Send">
-          <div class="box">
-            <div>
-              <strong class="send-label">Name</strong>
-              {{ FormatName(contact.Name) }}
-            </div>
-            <div>
-              <strong class="send-label">Address</strong>
-              {{ FormatAddress(contact.Address) }}
-            </div>
-            <div>
-              <strong class="send-label">Phone</strong>
-              {{ contact.Phone }}
-            </div>
-            <div>
-              <strong class="send-label">Email</strong>
-              {{ contact.Email }}
-            </div>
-            <div>
-              <strong class="send-label">Preferred</strong>
-              {{ contact.Preferred }}
-            </div>
-            <div>
-              <strong class="send-label">Subject</strong>
-              {{ contact.Subject }}
-            </div>
-            <div>
-              <strong class="send-label">Message</strong>
-              {{ contact.Message }}
-            </div>
-            <br/>
-            <b-button type="is-primary" @click="sendContact" outlined>
-              Send Contact Email
-            </b-button>
-          </div>
+          <ContactConfirm :contact="contact" @sendContact="sendContact" />
         </b-step-item>
       </b-steps>
     </div>
@@ -59,13 +26,14 @@
 
 <script>
 import BreadCrumbs from '../components/layout/BreadCrumbs.vue';
-import { contentUrl, ContentUUID, FormatAddress, FormatName, RemoveBlanks } from '../lib';
+import { contentUrl, ContentUUID, RemoveBlanks } from '../lib';
 import FormName from '../components/forms/FormName.vue';
 import FormAddress from '../components/forms/FormAddress.vue';
 import FormContactMethod from '../components/forms/FormContactMethod.vue';
 import FormMessage from '../components/forms/FormMessage.vue';
 import ContentRender from '../components/ContentRender.vue';
 import { CREATE_CONTACT_MUTATION } from '../graphql/mutations';
+import ContactConfirm from '../components/ContactConfirm.vue';
 
 export default {
   name: 'Contact',
@@ -75,7 +43,8 @@ export default {
     FormAddress,
     FormContactMethod,
     FormMessage,
-    ContentRender
+    ContentRender,
+    ContactConfirm
   },
   data: () => ({
     trail: [{ text: 'Home', href: '/' },{ text: 'Contact' }],
@@ -105,8 +74,6 @@ export default {
       Subject: '',
       Message: ''
     },
-    FormatAddress,
-    FormatName
   }),
   methods: {
     async loadContent() {
