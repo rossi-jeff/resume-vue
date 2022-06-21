@@ -103,10 +103,22 @@
 
         <strong>Online</strong>
         <hr>
-        <div>React:</div>
-				<div>Vue:</div>
-				<div>Angular:</div>
-				<div>Svelte:</div>
+        <div>
+            React:
+            <a href="https://resume-react.jeff-rossi.com/" target="_blank">https://resume-react.jeff-rossi.com/</a>
+        </div>
+        <div>
+            Vue:
+            <a href="https://resume-vue.jeff-rossi.com/" target="_blank">https://resume-vue.jeff-rossi.com/</a>
+        </div>
+        <div>
+            Angular:
+            <a href="https://resume-angular.jeff-rossi.com/" target="_blank">https://resume-angular.jeff-rossi.com/</a>
+        </div>
+        <div>
+            Svelte:
+            <a href="https://resume-svelte.jeff-rossi.com/" target="_blank">https://resume-svelte.jeff-rossi.com/</a>
+        </div>
         <br/>
 
         <strong>Contact</strong>
@@ -163,23 +175,23 @@ export default {
     },
     print() {
       const container = document.getElementById('print-container');
-		if (container) {
-			const content = container.innerHTML
-			const printWindow = window.open('', '', 'height=500, width=500');
-			if (printWindow) {
-				printWindow.document.write('<html>');
-				printWindow.document.write('<body>');
-				printWindow.document.write(content);
-				printWindow.document.write('</body>');
-        printWindow.document.write('<style>');
-        printWindow.document.write('body { margin:0; padding: 1.5em 2em 1.5em 2em; }');
-        printWindow.document.write('hr { margin: 0.25em 0 1em 0; border-top: solid black 1px; }');
-        printWindow.document.write('</style>');
-				printWindow.document.write('</html>');
-				printWindow.document.close();
-				printWindow.print();
-			}
-		}
+      if (container) {
+        const content = container.innerHTML
+        const printWindow = window.open('', '', 'height=500, width=500');
+        if (printWindow) {
+          printWindow.document.write('<html>');
+          printWindow.document.write('<body>');
+          printWindow.document.write(content);
+          printWindow.document.write('</body>');
+          printWindow.document.write('<style>');
+          printWindow.document.write('body { margin:0; padding: 1.5em 2em 1.5em 2em; }');
+          printWindow.document.write('hr { margin: 0.25em 0 1em 0; border-top: solid black 1px; }');
+          printWindow.document.write('</style>');
+          printWindow.document.write('</html>');
+          printWindow.document.close();
+          printWindow.print();
+        }
+      }
     }
   },
   created() {
