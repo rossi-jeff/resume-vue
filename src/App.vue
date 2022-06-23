@@ -14,3 +14,11 @@ export default {
   }
 }
 </script>
+
+<style>
+h2 {
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+</style>
